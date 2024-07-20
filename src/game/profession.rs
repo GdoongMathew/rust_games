@@ -163,4 +163,40 @@ mod profession_tests {
         assert_eq!(warrior.suppressed_by(&knight), false);
         assert_eq!(warrior.suppressed_by(&sorcerer), true);
     }
+
+    #[test]
+    fn test_sorcerer_effective_against_type() {
+        let warrior = Warrior::new();
+        let knight = Knight::new();
+        let sorcerer = Sorcerer::new();
+        assert_eq!(sorcerer.effective_against(&warrior), true);
+        assert_eq!(sorcerer.effective_against(&knight), false);
+    }
+
+    #[test]
+    fn test_sorcerer_suppressed_by_type() {
+        let warrior = Warrior::new();
+        let knight = Knight::new();
+        let sorcerer = Sorcerer::new();
+        assert_eq!(sorcerer.suppressed_by(&knight), true);
+        assert_eq!(sorcerer.suppressed_by(&warrior), false);
+    }
+
+    #[test]
+    fn test_knight_effective_against_type() {
+        let warrior = Warrior::new();
+        let knight = Knight::new();
+        let sorcerer = Sorcerer::new();
+        assert_eq!(knight.effective_against(&sorcerer), true);
+        assert_eq!(knight.effective_against(&warrior), false);
+    }
+
+    #[test]
+    fn test_knight_suppressed_by_type() {
+        let warrior = Warrior::new();
+        let knight = Knight::new();
+        let sorcerer = Sorcerer::new();
+        assert_eq!(knight.suppressed_by(&sorcerer), false);
+        assert_eq!(knight.suppressed_by(&warrior), true);
+    }
 }
