@@ -10,6 +10,11 @@ pub struct Stat {
     pub magic: i32,
 }
 
+pub trait StatTrait {
+    fn get_stat(&self) -> Stat;
+    fn set_stat(&self, stat: Stat) -> ();
+}
+
 impl fmt::Display for Stat {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
         writeln!(
