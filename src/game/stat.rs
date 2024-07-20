@@ -51,6 +51,15 @@ impl Add for Stat {
 }
 
 impl AddAssign for Stat {
+
+    /// Add and assign back to the original `Stat`
+    /// # Examples
+    /// ```
+    /// use game::Stat
+    /// let mut stat = Stat {health: 10, attack: 10, defense: 10, magic: 10};
+    /// let stat2 = Stat {health: 10, attack: 10, defense: 10, magic: 10};
+    /// stat += stat2;
+    /// assert_eq!(stat, Stat {health: 20, attack: 20, defense: 20, magic: 20});
     fn add_assign(&mut self, rhs: Self) {
         self.health += rhs.health;
         self.attack += rhs.attack;
@@ -62,6 +71,14 @@ impl AddAssign for Stat {
 impl Sub for Stat {
     type Output = Self;
 
+    /// Subtract two stat member to a new `Stat`
+    /// # Examples
+    /// ```
+    /// use game::Stat
+    /// let stat = Stat {health: 10, attack: 10, defense: 10, magic: 10};
+    /// let stat2 = Stat {health: 10, attack: 10, defense: 10, magic: 10};
+    /// let stat3 = stat - stat2;
+    /// assert_eq!(stat3, Stat {health: 0, attack: 0, defense: 0, magic: 0});
     fn sub(self, rhs: Self) -> Self::Output {
         Self {
             health: self.health - rhs.health,
@@ -73,6 +90,15 @@ impl Sub for Stat {
 }
 
 impl SubAssign for Stat {
+
+    /// Subtract and assign back to the original `Stat`
+    /// # Examples
+    /// ```
+    /// use game::Stat
+    /// let mut stat = Stat {health: 10, attack: 10, defense: 10, magic: 10};
+    /// let stat2 = Stat {health: 10, attack: 10, defense: 10, magic: 10};
+    /// stat -= stat2;
+    /// assert_eq!(stat, Stat {health: 0, attack: 0, defense: 0, magic: 0});
     fn sub_assign(&mut self, rhs: Self) {
         self.health -= rhs.health;
         self.attack -= rhs.attack;
