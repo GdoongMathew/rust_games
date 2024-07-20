@@ -107,6 +107,7 @@ enum ProfessionType {
 }
 
 
+#[cfg(test)]
 mod profession_tests {
     use super::*;
 
